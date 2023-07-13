@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Grid,
   Box,
@@ -11,6 +11,8 @@ import NextLink from "next/link";
 import Image from "next/image";
 
 import GoogleIcon from "@mui/icons-material/Google";
+import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
+import EmailIcon from "@mui/icons-material/Email";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 
@@ -18,361 +20,564 @@ import CustomCheckbox from "../../src/components/forms/custom-elements/CustomChe
 import CustomTextField from "../../src/components/forms/custom-elements/CustomTextField";
 import CustomFormLabel from "../../src/components/forms/custom-elements/CustomFormLabel";
 
-import img1 from "../../assets/images/backgrounds/login-bg.svg";
+import img1 from "../../assets/images/backgrounds/scanbosecond.svg";
 import LogoIcon from "../../src/layouts/logo/LogoIcon";
 
-const Login = () => (
-  <Grid container sx={{ height: "100vh", justifyContent: "center" }}>
-    <Grid
-      item
-      xs={12}
-      sm={12}
-      lg={6}
-      sx={{
-        background: (theme) =>
-          `${theme.palette.mode === "dark" ? "#1c1f25" : "#ffffff"}`,
-      }}
-    >
-      <Box
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
+
+const LoginSchema = Yup.object().shape({
+  email: Yup.string()
+    .matches(
+      /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+      "Invalid email address"
+    )
+    .required("Email is required"),
+  password: Yup.string().required("Password is required"),
+  phone: Yup.string().required("Phone number is required"),
+  otp: Yup.string().required("OTP is required"),
+});
+
+const Login = () => {
+  const [signupMethod, setSignupMethod] = useState("email");
+  const handleSignupPhone = () => {
+    setSignupMethod("phone");
+  };
+  const handleSignupEmail = () => {
+    setSignupMethod("email");
+  };
+  return (
+    <Grid container sx={{ height: "100vh", justifyContent: "center" }}>
+      <Grid
+        item
+        xs={12}
+        sm={12}
+        lg={6}
         sx={{
-          position: "relative",
+          background: (theme) =>
+            `${theme.palette.mode === "dark" ? "#1c1f25" : "#E5EDF5"}`,
         }}
       >
         <Box
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
           sx={{
-            position: {
-              xs: "relative",
-              lg: "absolute",
-            },
-            height: { xs: "auto", lg: "100vh" },
-            right: { xs: "auto", lg: "-50px" },
-            margin: "0 auto",
+            position: "relative",
           }}
         >
-          <Image src={img1} alt="bg" maxWidth="812" />
-        </Box>
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            sx={{
+              position: {
+                xs: "relative",
+                lg: "absolute",
+              },
+              height: { xs: "auto", lg: "100vh" },
+              right: { xs: "auto", lg: "-50px" },
+              margin: "0 auto",
+            }}
+          >
+            <Image src={img1} alt="bg" maxWidth="812" />
+          </Box>
 
-        <Box
-          sx={{
-            p: 4,
-            position: "absolute",
-            top: "0",
-          }}
-        >
-          <LogoIcon />
-        </Box>
-      </Box>
-    </Grid>
-    <Grid item xs={12} sm={8} lg={6} display="flex" alignItems="center">
-      <Grid container spacing={0} display="flex" justifyContent="center">
-        <Grid item xs={12} lg={9} xl={6}>
           <Box
             sx={{
               p: 4,
+              position: "absolute",
+              top: "0",
             }}
           >
-            <Typography fontWeight="700" variant="h2">
-              Welcome to Flexy
-            </Typography>
-            <Box display="flex" alignItems="center">
-              <Typography
-                color="textSecondary"
-                variant="h6"
-                fontWeight="500"
-                sx={{
-                  mr: 1,
-                }}
-              >
-                New to Flexy?
-              </Typography>
-              <NextLink href="/authentication/register">
-                <Typography
-                  fontWeight="500"
-                  sx={{
-                    display: "block",
-                    textDecoration: "none",
-                    color: "primary.main",
-                    cursor: "pointer",
-                  }}
-                >
-                  Create an account
-                </Typography>
-              </NextLink>
-            </Box>
+            <LogoIcon />
+          </Box>
+        </Box>
+      </Grid>
+      <Grid item xs={12} sm={8} lg={6} display="flex" alignItems="center">
+        <Grid container spacing={0} display="flex" justifyContent="center">
+          <Grid item xs={12} lg={9} xl={6}>
             <Box
               sx={{
-                mt: 4,
+                p: 4,
               }}
             >
-              <CustomFormLabel htmlFor="email">Email Address</CustomFormLabel>
-              <CustomTextField id="email" variant="outlined" fullWidth />
-              <CustomFormLabel htmlFor="password">Password</CustomFormLabel>
-              <CustomTextField
-                id="password"
-                type="password"
-                variant="outlined"
-                fullWidth
-                sx={{
-                  mb: 3,
-                }}
-              />
-              <Box
-                sx={{
-                  display: {
-                    xs: "block",
-                    sm: "flex",
-                    lg: "flex",
-                  },
-                  alignItems: "center",
-                }}
-              >
-                <FormGroup>
-                  <FormControlLabel
-                    control={<CustomCheckbox defaultChecked />}
-                    label="Remeber this Device"
-                    sx={{
-                      mb: 2,
-                    }}
-                  />
-                </FormGroup>
-                <Box
-                  sx={{
-                    ml: "auto",
-                  }}
-                >
-                  <NextLink href="/authentication/reset-password">
-                    <Typography
-                      fontWeight="500"
-                      sx={{
-                        display: "block",
-                        textDecoration: "none",
-                        mb: "16px",
-                        color: "primary.main",
-                        cursor: "pointer",
-                      }}
-                    >
-                      Forgot Password ?
-                    </Typography>
-                  </NextLink>
-                </Box>
-              </Box>
-
-              <NextLink href="/">
-                <Button
-                  color="secondary"
-                  variant="contained"
-                  size="large"
-                  fullWidth
-                  sx={{
-                    pt: "10px",
-                    pb: "10px",
-                  }}
-                >
-                  Sign In
-                </Button>
-              </NextLink>
-              <Box
-                sx={{
-                  position: "relative",
-                  textAlign: "center",
-                  mt: "20px",
-                  mb: "20px",
-                  "&::before": {
-                    content: '""',
-                    background: (theme) =>
-                      `${
-                        theme.palette.mode === "dark" ? "#42464d" : "#ecf0f2"
-                      }`,
-                    height: "1px",
-                    width: "100%",
-                    position: "absolute",
-                    left: "0",
-                    top: "13px",
-                  },
-                }}
-              >
+              <Typography fontWeight="700" variant="h2">
+                Welcome to Flexy
+              </Typography>
+              <Box display="flex" alignItems="center">
                 <Typography
-                  component="span"
                   color="textSecondary"
                   variant="h6"
-                  fontWeight="400"
+                  fontWeight="500"
                   sx={{
-                    position: "relative",
-                    padding: "0 12px",
-                    background: (theme) =>
-                      `${theme.palette.mode === "dark" ? "#282c34" : "#fff"}`,
+                    mr: 1,
                   }}
                 >
-                  or sign in with
+                  New to Flexy?
                 </Typography>
+                <NextLink href="/authentication/register">
+                  <Typography
+                    fontWeight="500"
+                    sx={{
+                      display: "block",
+                      textDecoration: "none",
+                      color: "primary.main",
+                      cursor: "pointer",
+                    }}
+                  >
+                    Create an account
+                  </Typography>
+                </NextLink>
               </Box>
-
-              <Box>
-                <Button
-                  variant="outlined"
-                  size="large"
-                  display="flex"
-                  alignitems="center"
-                  justifycontent="center"
-                  sx={{
-                    width: "100%",
-                    borderColor: (theme) =>
-                      `${
-                        theme.palette.mode === "dark" ? "#42464d" : "#dde3e8"
-                      }`,
-                    borderWidth: "2px",
-                    textAlign: "center",
-                    mt: 2,
-                    pt: "10px",
-                    pb: "10px",
-                    "&:hover": {
-                      borderColor: (theme) =>
-                        `${
-                          theme.palette.mode === "dark" ? "#42464d" : "#dde3e8"
-                        }`,
-                      borderWidth: "2px",
-                    },
-                  }}
-                >
-                  <Box display="flex" alignItems="center">
-                    <GoogleIcon
+              <Formik
+                initialValues={{
+                  email: "",
+                  password: "",
+                  phone: "",
+                  otp: "",
+                }}
+                validationSchema={LoginSchema}
+                onSubmit={(values) => {
+                  // same shape as initial values
+                  console.log(values);
+                }}
+              >
+                {({
+                  errors,
+                  handleBlur,
+                  handleChange,
+                  handleSubmit,
+                  touched,
+                  values,
+                }) => (
+                  <Form>
+                    <Box
                       sx={{
-                        color: (theme) => theme.palette.error.main,
-                      }}
-                    />
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        ml: 1,
-                        color: (theme) =>
-                          `${
-                            theme.palette.mode === "dark"
-                              ? theme.palette.grey.A200
-                              : "#13152a"
-                          }`,
+                        mt: 4,
                       }}
                     >
-                      Google
-                    </Typography>
-                  </Box>
-                </Button>
-              </Box>
+                      {signupMethod === "email" && (
+                        <>
+                          <CustomFormLabel htmlFor="email">
+                            Email
+                          </CustomFormLabel>
+                          <CustomTextField
+                            id="email"
+                            variant="outlined"
+                            fullWidth
+                            onBlur={handleBlur}
+                            onChange={handleChange}
+                            error={touched.email && errors.email}
+                            name="email"
+                          />
+                          {errors.email && touched.email ? (
+                            <div style={{ color: "red" }}>{errors.email}</div>
+                          ) : null}
+                          <CustomFormLabel htmlFor="password">
+                            Password
+                          </CustomFormLabel>
+                          <CustomTextField
+                            id="password"
+                            variant="outlined"
+                            name="password"
+                            onBlur={handleBlur}
+                            onChange={handleChange}
+                            fullWidth
+                            error={touched.password && errors.password}
+                            sx={{
+                              pb: "15px",
+                            }}
+                          />
+                          {errors.password && touched.password ? (
+                            <div style={{ color: "red", marginBottom: "10px" }}>
+                              {errors.password}
+                            </div>
+                          ) : null}
+                        </>
+                      )}
+                      {signupMethod === "phone" && (
+                        <>
+                          <CustomFormLabel htmlFor="phone">
+                            Phone
+                          </CustomFormLabel>
+                          <CustomTextField
+                            id="phone"
+                            variant="outlined"
+                            fullWidth
+                            onBlur={handleBlur}
+                            onChange={handleChange}
+                            name="phone"
+                            error={touched.phone && errors.phone}
+                          />
+                          {errors.phone && touched.phone ? (
+                            <div style={{ color: "red" }}>{errors.phone}</div>
+                          ) : null}
+                          <CustomFormLabel htmlFor="otp">OTP</CustomFormLabel>
+                          <CustomTextField
+                            id="otp"
+                            variant="outlined"
+                            name="otp"
+                            onBlur={handleBlur}
+                            onChange={handleChange}
+                            error={touched.otp && errors.otp}
+                            fullWidth
+                            sx={{
+                              pb: "15px",
+                            }}
+                          />
+                          {errors.otp && touched.otp ? (
+                            <div style={{ color: "red" }}>{errors.otp}</div>
+                          ) : null}
+                        </>
+                      )}
 
-              <Grid container spacing={2}>
-                <Grid item xs={12} sm={6} lg={6}>
-                  <Button
-                    variant="outlined"
-                    size="large"
-                    display="flex"
-                    alignitems="center"
-                    justifycontent="center"
-                    sx={{
-                      width: "100%",
-                      borderColor: (theme) =>
-                        `${
-                          theme.palette.mode === "dark" ? "#42464d" : "#dde3e8"
-                        }`,
-                      borderWidth: "2px",
-                      textAlign: "center",
-                      mt: 2,
-                      pt: "10px",
-                      pb: "10px",
-                      "&:hover": {
-                        borderColor: (theme) =>
-                          `${
-                            theme.palette.mode === "dark"
-                              ? "#42464d"
-                              : "#dde3e8"
-                          }`,
-                        borderWidth: "2px",
-                      },
-                    }}
-                  >
-                    <Box display="flex" alignItems="center">
-                      <FacebookIcon
+                      {/* <NextLink href="/"> */}
+                      <Button
+                        color="secondary"
+                        variant="contained"
+                        size="large"
+                        type="submit"
+                        style={{ background: "#6c63ff" }}
+                        fullWidth
                         sx={{
-                          color: (theme) => theme.palette.secondary.main,
-                        }}
-                      />
-                      <Typography
-                        variant="h6"
-                        sx={{
-                          ml: 1,
-                          color: (theme) =>
-                            `${
-                              theme.palette.mode === "dark"
-                                ? theme.palette.grey.A200
-                                : "#13152a"
-                            }`,
+                          pt: "10px",
+                          pb: "10px",
                         }}
                       >
-                        Facebook
-                      </Typography>
-                    </Box>
-                  </Button>
-                </Grid>
-                <Grid item xs={12} sm={6} lg={6}>
-                  <Button
-                    variant="outlined"
-                    size="large"
-                    display="flex"
-                    alignitems="center"
-                    justifycontent="center"
-                    sx={{
-                      width: "100%",
-                      borderColor: (theme) =>
-                        `${
-                          theme.palette.mode === "dark" ? "#42464d" : "#dde3e8"
-                        }`,
-                      borderWidth: "2px",
-                      textAlign: "center",
-                      mt: 2,
-                      pt: "10px",
-                      pb: "10px",
-                      "&:hover": {
-                        borderColor: (theme) =>
-                          `${
-                            theme.palette.mode === "dark"
-                              ? "#42464d"
-                              : "#dde3e8"
-                          }`,
-                        borderWidth: "2px",
-                      },
-                    }}
-                  >
-                    <Box display="flex" alignItems="center">
-                      <TwitterIcon
+                        Log In
+                      </Button>
+                      {/* </NextLink> */}
+
+                      <Box
                         sx={{
-                          color: (theme) => theme.palette.primary.main,
-                        }}
-                      />
-                      <Typography
-                        variant="h6"
-                        sx={{
-                          ml: 1,
-                          color: (theme) =>
-                            `${
-                              theme.palette.mode === "dark"
-                                ? theme.palette.grey.A200
-                                : "#13152a"
-                            }`,
+                          position: "relative",
+                          textAlign: "center",
+                          mt: "20px",
+                          mb: "20px",
+                          "&::before": {
+                            content: '""',
+                            background: (theme) =>
+                              `${
+                                theme.palette.mode === "dark"
+                                  ? "#42464d"
+                                  : "#ecf0f2"
+                              }`,
+                            height: "1px",
+                            width: "100%",
+                            position: "absolute",
+                            left: "0",
+                            top: "13px",
+                          },
                         }}
                       >
-                        Twitter
-                      </Typography>
+                        <Typography
+                          component="span"
+                          color="textSecondary"
+                          variant="h6"
+                          fontWeight="400"
+                          sx={{
+                            position: "relative",
+                            padding: "0 12px",
+                            background: (theme) =>
+                              `${
+                                theme.palette.mode === "dark"
+                                  ? "#282c34"
+                                  : "#fff"
+                              }`,
+                          }}
+                        >
+                          or sign in with
+                        </Typography>
+                      </Box>
+
+                      {signupMethod === "email" && (
+                        <Box>
+                          <Button
+                            variant="outlined"
+                            size="large"
+                            display="flex"
+                            alignitems="center"
+                            justifycontent="center"
+                            onClick={handleSignupPhone}
+                            sx={{
+                              width: "100%",
+                              borderColor: (theme) =>
+                                `${
+                                  theme.palette.mode === "dark"
+                                    ? "#42464d"
+                                    : "#dde3e8"
+                                }`,
+                              borderWidth: "2px",
+                              textAlign: "center",
+                              mt: 2,
+                              pt: "10px",
+                              pb: "10px",
+                              "&:hover": {
+                                borderColor: (theme) =>
+                                  `${
+                                    theme.palette.mode === "dark"
+                                      ? "#42464d"
+                                      : "#dde3e8"
+                                  }`,
+                                borderWidth: "2px",
+                              },
+                            }}
+                          >
+                            <Box display="flex" alignItems="center">
+                              <PhoneIphoneIcon
+                                sx={{
+                                  color: (theme) => theme.palette.error.main,
+                                }}
+                              />
+                              <Typography
+                                variant="h6"
+                                sx={{
+                                  ml: 1,
+                                  color: (theme) =>
+                                    `${
+                                      theme.palette.mode === "dark"
+                                        ? theme.palette.grey.A200
+                                        : "#13152a"
+                                    }`,
+                                }}
+                              >
+                                Phone
+                              </Typography>
+                            </Box>
+                          </Button>
+                        </Box>
+                      )}
+                      {signupMethod === "phone" && (
+                        <Box>
+                          <Button
+                            variant="outlined"
+                            size="large"
+                            display="flex"
+                            alignitems="center"
+                            justifycontent="center"
+                            onClick={handleSignupEmail}
+                            sx={{
+                              width: "100%",
+                              borderColor: (theme) =>
+                                `${
+                                  theme.palette.mode === "dark"
+                                    ? "#42464d"
+                                    : "#dde3e8"
+                                }`,
+                              borderWidth: "2px",
+                              textAlign: "center",
+                              mt: 2,
+                              pt: "10px",
+                              pb: "10px",
+                              "&:hover": {
+                                borderColor: (theme) =>
+                                  `${
+                                    theme.palette.mode === "dark"
+                                      ? "#42464d"
+                                      : "#dde3e8"
+                                  }`,
+                                borderWidth: "2px",
+                              },
+                            }}
+                          >
+                            <Box display="flex" alignItems="center">
+                              <EmailIcon
+                                sx={{
+                                  color: (theme) => theme.palette.error.main,
+                                }}
+                              />
+                              <Typography
+                                variant="h6"
+                                sx={{
+                                  ml: 1,
+                                  color: (theme) =>
+                                    `${
+                                      theme.palette.mode === "dark"
+                                        ? theme.palette.grey.A200
+                                        : "#13152a"
+                                    }`,
+                                }}
+                              >
+                                Email
+                              </Typography>
+                            </Box>
+                          </Button>
+                        </Box>
+                      )}
+
+                      <Box>
+                        <Button
+                          variant="outlined"
+                          size="large"
+                          display="flex"
+                          alignitems="center"
+                          justifycontent="center"
+                          sx={{
+                            width: "100%",
+                            borderColor: (theme) =>
+                              `${
+                                theme.palette.mode === "dark"
+                                  ? "#42464d"
+                                  : "#dde3e8"
+                              }`,
+                            borderWidth: "2px",
+                            textAlign: "center",
+                            mt: 2,
+                            pt: "10px",
+                            pb: "10px",
+                            "&:hover": {
+                              borderColor: (theme) =>
+                                `${
+                                  theme.palette.mode === "dark"
+                                    ? "#42464d"
+                                    : "#dde3e8"
+                                }`,
+                              borderWidth: "2px",
+                            },
+                          }}
+                        >
+                          <Box display="flex" alignItems="center">
+                            <GoogleIcon
+                              sx={{
+                                color: (theme) => theme.palette.error.main,
+                              }}
+                            />
+                            <Typography
+                              variant="h6"
+                              sx={{
+                                ml: 1,
+                                color: (theme) =>
+                                  `${
+                                    theme.palette.mode === "dark"
+                                      ? theme.palette.grey.A200
+                                      : "#13152a"
+                                  }`,
+                              }}
+                            >
+                              Google
+                            </Typography>
+                          </Box>
+                        </Button>
+                      </Box>
+
+                      {/* <Grid container spacing={2}>
+                      <Grid item xs={12} sm={6} lg={6}>
+                        <Button
+                          variant="outlined"
+                          size="large"
+                          display="flex"
+                          alignitems="center"
+                          justifycontent="center"
+                          sx={{
+                            width: "100%",
+                            borderColor: (theme) =>
+                              `${
+                                theme.palette.mode === "dark"
+                                  ? "#42464d"
+                                  : "#dde3e8"
+                              }`,
+                            borderWidth: "2px",
+                            textAlign: "center",
+                            mt: 2,
+                            pt: "10px",
+                            pb: "10px",
+                            "&:hover": {
+                              borderColor: (theme) =>
+                                `${
+                                  theme.palette.mode === "dark"
+                                    ? "#42464d"
+                                    : "#dde3e8"
+                                }`,
+                              borderWidth: "2px",
+                            },
+                          }}
+                        >
+                          <Box display="flex" alignItems="center">
+                            <FacebookIcon
+                              sx={{
+                                color: (theme) => theme.palette.secondary.main,
+                              }}
+                            />
+                            <Typography
+                              variant="h6"
+                              sx={{
+                                ml: 1,
+                                color: (theme) =>
+                                  `${
+                                    theme.palette.mode === "dark"
+                                      ? theme.palette.grey.A200
+                                      : "#13152a"
+                                  }`,
+                              }}
+                            >
+                              Facebook
+                            </Typography>
+                          </Box>
+                        </Button>
+                      </Grid>
+                      <Grid item xs={12} sm={6} lg={6}>
+                        <Button
+                          variant="outlined"
+                          size="large"
+                          display="flex"
+                          alignitems="center"
+                          justifycontent="center"
+                          sx={{
+                            width: "100%",
+                            borderColor: (theme) =>
+                              `${
+                                theme.palette.mode === "dark"
+                                  ? "#42464d"
+                                  : "#dde3e8"
+                              }`,
+                            borderWidth: "2px",
+                            textAlign: "center",
+                            mt: 2,
+                            pt: "10px",
+                            pb: "10px",
+                            "&:hover": {
+                              borderColor: (theme) =>
+                                `${
+                                  theme.palette.mode === "dark"
+                                    ? "#42464d"
+                                    : "#dde3e8"
+                                }`,
+                              borderWidth: "2px",
+                            },
+                          }}
+                        >
+                          <Box display="flex" alignItems="center">
+                            <TwitterIcon
+                              sx={{
+                                color: (theme) => theme.palette.primary.main,
+                              }}
+                            />
+                            <Typography
+                              variant="h6"
+                              sx={{
+                                ml: 1,
+                                color: (theme) =>
+                                  `${
+                                    theme.palette.mode === "dark"
+                                      ? theme.palette.grey.A200
+                                      : "#13152a"
+                                  }`,
+                              }}
+                            >
+                              Twitter
+                            </Typography>
+                          </Box>
+                        </Button>
+                      </Grid>
+                    </Grid>  */}
                     </Box>
-                  </Button>
-                </Grid>
-              </Grid>
+                  </Form>
+                )}
+              </Formik>
             </Box>
-          </Box>
+          </Grid>
         </Grid>
       </Grid>
     </Grid>
-  </Grid>
-);
+  );
+};
 Login.layout = "Blank";
 export default Login;

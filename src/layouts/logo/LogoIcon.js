@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import Image from "next/image";
 import LogoDark from "../../../assets/images/logos/logo-dark.svg";
 import LogoLight from "../../../assets/images/logos/logo-white.svg";
-import LogoScanbo from "../../../assets/images/logos/logo-scanbo.svg";
+import LogoScanbo from "../../../assets/images/logos/dequiteyLogo.svg";
 
 const LogoIcon = () => {
   const customizer = useSelector((state) => state.CustomizerReducer);

@@ -1,0 +1,21 @@
+
+:root {
+    --body-font: "Roboto";
+  
+    // --body-color: #ffffff;
+    // --para-color: #2c3655;
+    // --head-color: #0a1023;
+    // --head-alt-color: #055c2d;
+    // --hover-color: #1a4dbe;
+  }
+
+body {
+    font-family: var(--body-font);
+    // background-color: var(--body-color);
+    font-size: 18px;
+    // line-height: 30px;
+    // padding: 0;
+    // margin: 0;
+    // font-weight: 400;
+    // overflow-x: hidden;
+  }
