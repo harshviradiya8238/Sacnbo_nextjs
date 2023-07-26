@@ -37,10 +37,12 @@ function MyApp(props) {
       <ThemeProvider theme={Gettheme}>
         <RTL direction={customizer.activeDir}>
           <CssBaseline />
-          <Layout>
-            <NotificationContainer />
-            <Component {...pageProps} />
-          </Layout>
+          <div style={{ background: "#E5EDF5" }}>
+            <Layout>
+              <NotificationContainer />
+              <Component {...pageProps} />
+            </Layout>
+          </div>
         </RTL>
       </ThemeProvider>
     </CacheProvider>

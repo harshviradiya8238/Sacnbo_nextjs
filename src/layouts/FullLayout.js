@@ -37,6 +37,7 @@ const FullLayout = ({ children }) => {
   const [isMobileSidebarOpen, setMobileSidebarOpen] = React.useState(false);
   const customizer = useSelector((state) => state.CustomizerReducer);
   const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg"));
+  console.log(children);
   return (
     <MainWrapper>
       <Header

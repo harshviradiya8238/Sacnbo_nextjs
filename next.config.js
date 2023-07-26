@@ -5,7 +5,7 @@ module.exports = {
     return [
       {
         source: "/",
-        destination: "/dashboards/dashboard1",
+        destination: "/authentication/login",
         permanent: true,
       },
     ];

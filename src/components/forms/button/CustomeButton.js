@@ -10,7 +10,7 @@ function CustomeButton(props) {
       {...props}
       style={{
         // boxShadow:
-        //   "inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2), inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5)",
+        //   "4px 2px 8px 0px rgba(95, 157, 231, 0.48) inset, -4px -2px 8px 0px #FFF inset",
         // background: "#c4c0f5",
         // borderRadius: "50px",
         // // width: "100%",
@@ -21,7 +21,7 @@ function CustomeButton(props) {
         border: " 2px solid rgba(255, 255, 255, 0.20)",
         background: "#b8b2fc",
         boxShadow:
-          " 4px 2px 8px 0px rgba(95, 157, 231, 0.48) inset, -4px -2px 8px 0px #FFF inset",
+          "4px 2px 8px 0px rgba(95, 157, 231, 0.48) inset, -4px -2px 8px 0px #FFF inset",
       }}
     >
       {props.children}

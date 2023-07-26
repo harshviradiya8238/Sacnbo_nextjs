@@ -9,7 +9,7 @@ const CustomTextField = styled((props) => <TextField {...props} />)(
       opacity: "1",
 
       boxShadow:
-        "inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2), inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5)",
+        "4px 2px 8px 0px rgba(95, 157, 231, 0.48) inset, -4px -2px 8px 0px #FFF inset",
       borderRadius: "50px",
     },
     "& .MuiOutlinedInput-notchedOutline": {
@@ -18,7 +18,7 @@ const CustomTextField = styled((props) => <TextField {...props} />)(
       }`,
       borderRadius: "20px",
       border: " 2px solid rgba(255, 255, 255, 0.20)",
-      background: "#E5EDF5",
+
       boxShadow:
         " 4px 2px 8px 0px rgba(95, 157, 231, 0.48) inset, -4px -2px 8px 0px #FFF inset",
     },

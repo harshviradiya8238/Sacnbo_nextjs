@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid, Box, Typography, Button } from "@mui/material";
 import Image from "next/image";
+import { makeStyles } from "@mui/styles";
 import NextLink from "next/link";
 
 import GoogleIcon from "@mui/icons-material/Google";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
+// import MicrosoftIcon from "@mui/icons-material/Microsoft";
+import WindowIcon from "@mui/icons-material/Window";
+import AppleIcon from "@mui/icons-material/Apple";
 
 import CustomTextField from "../../src/components/forms/custom-elements/CustomTextField";
 import CustomFormLabel from "../../src/components/forms/custom-elements/CustomFormLabel";
@@ -15,35 +17,62 @@ import CustomFormLabel from "../../src/components/forms/custom-elements/CustomFo
 import img1 from "../../assets/images/backgrounds/scanbosecond.svg";
 import LogoIcon from "../../src/layouts/logo/LogoIcon";
 
+import { GoogleLogin } from "react-google-login";
+
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 
 import { useDispatch } from "react-redux";
-import { register } from "../../src/store/auth/Action";
+// import { register } from "../../src/store/auth/Action";
 import EmailForm from "../forms/email-form";
 import { useState } from "react";
 import PhoneForm from "../forms/phone-form";
 import CustomeButton from "../../src/components/forms/button/CustomeButton";
+// import { gapi } from "gapi-script";
 
-const SignupSchema = Yup.object().shape({
-  firstName: Yup.string()
-    .min(2, "Too Short!")
-    .max(50, "Too Long!")
-    .required("FirstName is Required"),
-  lastName: Yup.string()
-    .min(2, "Too Short!")
-    .max(50, "Too Long!")
-    .required("LastName is Required"),
-  email: Yup.string()
-    .matches(
-      /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-      "Invalid email address"
-    )
-    .required("Email is required"),
-  password: Yup.string().required("Password is required"),
+const useStyles = makeStyles({
+  google_button: {
+    height: "50px",
+    boxShadow:
+      "4px 2px 8px 0px rgba(95, 157, 231, 0.48) inset, -4px -2px 8px 0px #FFF inset !important",
+    // borderRadius: "20px !important",
+    borderRadius: "10px !important",
+    justifyContent: "center !important",
+    background: "#E5EDF5 !important",
+    width: "100% !important",
+    // border: "none !important",
+    fontSize: "20px !important",
+    padding: "15px !important",
+    "& div ": {
+      background: "none !important",
+    },
+    "& span ": {
+      color: "#13152a !important",
+      margin: 0,
+      fontWeight: "500 !important",
+      fontSize: "0.875rem",
+      lineHeight: 1.5,
+      fontFamily: 'DM Sans,"sans-serif !important',
+      color: "#13152a !important",
+      marginLeft: "8px !important",
+      fontSize: "17px !important",
+    },
+  },
 });
 
 const Register = () => {
+  const classes = useStyles();
+
+  // useEffect(async () => {
+  //   function start() {
+  //     gapi.client.init({
+  //       clientId: clientId,
+  //       scope: "",
+  //     });
+  //   }
+
+  //   // await gapi.load("client:auth2", start);
+  // }, [0]);
   const [isEmail, setIsEmail] = useState(false);
   const [isPhone, setIsPhone] = useState(false);
 
@@ -54,8 +83,27 @@ const Register = () => {
   const handleEmailFormopen = () => {
     setIsEmail(true);
   };
+  const clientId =
+    "1092938854409-irtfusioh66v37rjuc8ksdlv0hattb57.apps.googleusercontent.com";
+
+  const onSuccess = (res) => {
+    console.log("LOGIN SUCCESS! Current user: ", res.profileObj);
+  };
+
+  const onFailure = (res) => {
+    console.log("LOGIN FAILED! res: ", res);
+  };
+
   return (
-    <Grid container sx={{ height: "100vh", justifyContent: "center" }}>
+    <Grid
+      container
+      sx={{
+        minHeight: "100vh",
+        justifyContent: "center",
+        background: (theme) =>
+          `${theme.palette.mode === "dark" ? "#1c1f25" : ""}`,
+      }}
+    >
       <Grid
         item
         xs={12}
@@ -63,7 +111,7 @@ const Register = () => {
         lg={6}
         sx={{
           background: (theme) =>
-            `${theme.palette.mode === "dark" ? "#1c1f25" : "#ffffff"}`,
+            `${theme.palette.mode === "dark" ? "#1c1f25" : "#E5EDF5"}`,
         }}
       >
         <Box
@@ -101,7 +149,18 @@ const Register = () => {
           </Box>
         </Box>
       </Grid>
-      <Grid item xs={12} sm={8} lg={6} display="flex" alignItems="center">
+      <Grid
+        item
+        xs={12}
+        sm={8}
+        lg={6}
+        display="flex"
+        alignItems="center"
+        sx={{
+          background: (theme) =>
+            `${theme.palette.mode === "dark" ? "#1c1f25" : "#E5EDF5"}`,
+        }}
+      >
         <Grid container spacing={0} display="flex" justifyContent="center">
           <Grid item xs={12} lg={9} xl={6}>
             <Box
@@ -153,6 +212,67 @@ const Register = () => {
                       size="large"
                       display="flex"
                       alignitems="center"
+                      onClick={handlePhoneFormopen}
+                      justifycontent="center"
+                      sx={{
+                        width: "100%",
+
+                        height: "60px",
+                        borderRadius: "10px",
+                        boxShadow:
+                          "4px 2px 8px 0px rgba(95, 157, 231, 0.48) inset, -4px -2px 8px 0px #FFF inset",
+                        borderColor: (theme) =>
+                          `${
+                            theme.palette.mode === "dark"
+                              ? "#42464d"
+                              : "#dde3e8"
+                          }`,
+                        borderWidth: "2px",
+                        textAlign: "center",
+                        mt: 2,
+                        pt: "10px",
+                        pb: "10px",
+                        "&:hover": {
+                          borderColor: (theme) =>
+                            `${
+                              theme.palette.mode === "dark"
+                                ? "#42464d"
+                                : "#dde3e8"
+                            }`,
+                          borderWidth: "2px",
+                        },
+                      }}
+                    >
+                      <Box display="flex" alignItems="center">
+                        <PhoneIphoneIcon
+                          sx={{
+                            color: (theme) => theme.palette.error.main,
+                          }}
+                        />
+                        <Typography
+                          variant="h6"
+                          sx={{
+                            ml: 1,
+                            fontSize: "17px",
+                            color: (theme) =>
+                              `${
+                                theme.palette.mode === "dark"
+                                  ? theme.palette.grey.A200
+                                  : "#13152a"
+                              }`,
+                          }}
+                        >
+                          Sign Up with Mobile
+                        </Typography>
+                      </Box>
+                    </Button>
+                  </Box>
+                  <Box>
+                    <Button
+                      variant="outlined"
+                      size="large"
+                      display="flex"
+                      alignitems="center"
                       justifycontent="center"
                       onClick={handleEmailFormopen}
                       sx={{
@@ -160,7 +280,7 @@ const Register = () => {
                         height: "60px",
                         borderRadius: "10px",
                         boxShadow:
-                          "inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2), inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5)",
+                          "4px 2px 8px 0px rgba(95, 157, 231, 0.48) inset, -4px -2px 8px 0px #FFF inset",
                         borderColor: (theme) =>
                           `${
                             theme.palette.mode === "dark"
@@ -208,67 +328,7 @@ const Register = () => {
                       </Box>
                     </Button>
                   </Box>
-                  <Box>
-                    <Button
-                      variant="outlined"
-                      size="large"
-                      display="flex"
-                      alignitems="center"
-                      onClick={handlePhoneFormopen}
-                      justifycontent="center"
-                      sx={{
-                        width: "100%",
 
-                        height: "60px",
-                        borderRadius: "10px",
-                        boxShadow:
-                          "inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2), inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5)",
-                        borderColor: (theme) =>
-                          `${
-                            theme.palette.mode === "dark"
-                              ? "#42464d"
-                              : "#dde3e8"
-                          }`,
-                        borderWidth: "2px",
-                        textAlign: "center",
-                        mt: 2,
-                        pt: "10px",
-                        pb: "10px",
-                        "&:hover": {
-                          borderColor: (theme) =>
-                            `${
-                              theme.palette.mode === "dark"
-                                ? "#42464d"
-                                : "#dde3e8"
-                            }`,
-                          borderWidth: "2px",
-                        },
-                      }}
-                    >
-                      <Box display="flex" alignItems="center">
-                        <PhoneIphoneIcon
-                          sx={{
-                            color: (theme) => theme.palette.error.main,
-                          }}
-                        />
-                        <Typography
-                          variant="h6"
-                          sx={{
-                            ml: 1,
-                            fontSize: "17px",
-                            color: (theme) =>
-                              `${
-                                theme.palette.mode === "dark"
-                                  ? theme.palette.grey.A200
-                                  : "#13152a"
-                              }`,
-                          }}
-                        >
-                          Sign Up with Mobile
-                        </Typography>
-                      </Box>
-                    </Button>
-                  </Box>
                   <Box
                     sx={{
                       position: "relative",
@@ -301,7 +361,9 @@ const Register = () => {
                         padding: "0 12px",
                         background: (theme) =>
                           `${
-                            theme.palette.mode === "dark" ? "#282c34" : "#fff"
+                            theme.palette.mode === "dark"
+                              ? "#282c34"
+                              : "#E5EDF5"
                           }`,
                       }}
                     >
@@ -309,18 +371,19 @@ const Register = () => {
                     </Typography>
                   </Box>
                   <Box>
-                    <Button
+                    {/* <Button
                       variant="outlined"
                       size="large"
                       display="flex"
                       alignitems="center"
                       justifycontent="center"
+                      onClick={handleGoogleSignIn}
                       sx={{
                         width: "100%",
                         height: "60px",
                         borderRadius: "10px",
                         boxShadow:
-                          "inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2), inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5)",
+                          "4px 2px 8px 0px rgba(95, 157, 231, 0.48) inset, -4px -2px 8px 0px #FFF inset",
                         borderColor: (theme) =>
                           `${
                             theme.palette.mode === "dark"
@@ -363,6 +426,134 @@ const Register = () => {
                           }}
                         >
                           Google
+                        </Typography>
+                      </Box>
+                    </Button> */}
+
+                    <GoogleLogin
+                      clientId={clientId}
+                      buttonText="Login"
+                      onSuccess={onSuccess}
+                      onFailure={onFailure}
+                      className={classes.google_button}
+                      cookiePolicy={"single_host_origin"}
+                      isSignedIn={true}
+                    />
+                  </Box>
+                  <Box>
+                    <Button
+                      variant="outlined"
+                      size="large"
+                      display="flex"
+                      alignitems="center"
+                      justifycontent="center"
+                      sx={{
+                        width: "100%",
+                        height: "60px",
+                        borderRadius: "10px",
+                        boxShadow:
+                          "4px 2px 8px 0px rgba(95, 157, 231, 0.48) inset, -4px -2px 8px 0px #FFF inset",
+                        borderColor: (theme) =>
+                          `${
+                            theme.palette.mode === "dark"
+                              ? "#42464d"
+                              : "#dde3e8"
+                          }`,
+                        borderWidth: "2px",
+                        textAlign: "center",
+                        mt: 2,
+                        pt: "10px",
+                        pb: "10px",
+                        "&:hover": {
+                          borderColor: (theme) =>
+                            `${
+                              theme.palette.mode === "dark"
+                                ? "#42464d"
+                                : "#dde3e8"
+                            }`,
+                          borderWidth: "2px",
+                        },
+                      }}
+                    >
+                      <Box display="flex" alignItems="center">
+                        <WindowIcon
+                          sx={{
+                            color: (theme) => theme.palette.error.main,
+                          }}
+                        />
+                        <Typography
+                          variant="h6"
+                          sx={{
+                            ml: 1,
+                            fontSize: "17px",
+                            color: (theme) =>
+                              `${
+                                theme.palette.mode === "dark"
+                                  ? theme.palette.grey.A200
+                                  : "#13152a"
+                              }`,
+                          }}
+                        >
+                          Microsoft
+                        </Typography>
+                      </Box>
+                    </Button>
+                  </Box>
+                  <Box>
+                    <Button
+                      variant="outlined"
+                      size="large"
+                      display="flex"
+                      alignitems="center"
+                      justifycontent="center"
+                      sx={{
+                        width: "100%",
+                        height: "60px",
+                        borderRadius: "10px",
+                        boxShadow:
+                          "4px 2px 8px 0px rgba(95, 157, 231, 0.48) inset, -4px -2px 8px 0px #FFF inset",
+                        borderColor: (theme) =>
+                          `${
+                            theme.palette.mode === "dark"
+                              ? "#42464d"
+                              : "#dde3e8"
+                          }`,
+                        borderWidth: "2px",
+                        textAlign: "center",
+                        mt: 2,
+                        pt: "10px",
+                        pb: "10px",
+                        "&:hover": {
+                          borderColor: (theme) =>
+                            `${
+                              theme.palette.mode === "dark"
+                                ? "#42464d"
+                                : "#dde3e8"
+                            }`,
+                          borderWidth: "2px",
+                        },
+                      }}
+                    >
+                      <Box display="flex" alignItems="center">
+                        <AppleIcon
+                          sx={{
+                            color: (theme) => theme.palette.error.main,
+                          }}
+                        />
+                        <Typography
+                          variant="h6"
+                          sx={{
+                            ml: 1,
+                            fontSize: "17px",
+                            color: (theme) =>
+                              `${
+                                theme.palette.mode === "dark"
+                                  ? theme.palette.grey.A200
+                                  : "#13152a"
+                              }`,
+                          }}
+                        >
+                          Apple
                         </Typography>
                       </Box>
                     </Button>

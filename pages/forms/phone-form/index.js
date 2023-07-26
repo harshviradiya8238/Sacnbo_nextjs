@@ -12,14 +12,17 @@ import PhoneInput from "react-phone-number-input";
 import OtpInput from "react-otp-input";
 import Checkbox from "@mui/material/Checkbox";
 import CustomeButton from "../../../src/components/forms/button/CustomeButton";
+import OtpTimer from "../../otp-timer";
 
 const useStyles = makeStyles({
   phone: {
     "& div input": {
       height: "50px",
       boxShadow:
-        "inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2), inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5)",
-      borderRadius: "50px",
+        "4px 2px 8px 0px rgba(95, 157, 231, 0.48) inset, -4px -2px 8px 0px #FFF inset",
+      borderRadius: "20px",
+      background: "#E5EDF5",
+
       border: "none",
       fontSize: "20px",
       padding: "15px",
@@ -35,8 +38,11 @@ const useStyles = makeStyles({
       minWidth: "4em",
       border: "none",
       borderRadius: "10px",
+      background: "#E5EDF5",
+      fontSize: "15px",
+      margin: "5px",
       boxShadow:
-        "inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2), inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5)",
+        "4px 2px 8px 0px rgba(95, 157, 231, 0.48) inset, -4px -2px 8px 0px #FFF inset",
     },
   },
 });
@@ -59,9 +65,16 @@ function PhoneForm() {
 
   const [phoneValue, setPhoneValue] = useState();
   const [sendOtp, setSendOtp] = useState(false);
+  const [isOtpSent, setIsOtpSent] = useState(true);
   const [otp, setOtp] = useState("");
 
   const handleSendOTP = () => {
+    setSendOtp(true);
+    setIsOtpSent(true);
+  };
+
+  const handleResendOtp = () => {
+    // Logic to resend the OTP
     setSendOtp(true);
   };
 
@@ -133,7 +146,9 @@ function PhoneForm() {
                         alignItems: "center",
                       }}
                     >
-                      <h1 style={{ color: "#777e89" }}>Enter Your Phone</h1>
+                      <h1 style={{ color: "#777e89", margin: "3px" }}>
+                        Enter Your Phone
+                      </h1>
                     </div>
                     <div
                       style={{
@@ -172,7 +187,7 @@ function PhoneForm() {
                         alignItems: "center",
                       }}
                     >
-                      <h1 style={{ color: "#777e89" }}>Enter 4 Digit Code</h1>
+                      <h1 style={{ color: "#777e89" }}>Enter 6 Digit Code</h1>
                     </div>
                     <div
                       style={{
@@ -182,7 +197,7 @@ function PhoneForm() {
                       }}
                     >
                       <span>
-                        Provide your number so we can send you 4 Digit Code to
+                        Provide your number so we can send you 6 Digit Code to
                         log you in
                       </span>
                     </div>
@@ -190,13 +205,31 @@ function PhoneForm() {
                       <OtpInput
                         value={otp}
                         onChange={setOtp}
-                        numInputs={4}
-                        renderSeparator={<span>-</span>}
+                        numInputs={6}
+                        // renderSeparator={<span> </span>}
                         renderInput={(props) => <input {...props} />}
                       />
                     </div>
-                    <div style={{ textAlign: "right" }}>
-                      <Button>resend OTP</Button>
+                    <div style={{ textAlign: "right", marginTop: "10px" }}>
+                      <div style={{ minWidth: "450px" }}>
+                        {isOtpSent ? (
+                          <OtpTimer
+                            isOtpSent={isOtpSent}
+                            handleResendOtp={handleResendOtp}
+                          />
+                        ) : (
+                          <Button onClick={handleSendOTP}>
+                            <span
+                              style={{
+                                textDecoration: "underline",
+                                marginRight: "16px",
+                              }}
+                            >
+                              Resend OTP
+                            </span>
+                          </Button>
+                        )}
+                      </div>
                     </div>
                   </>
                 )}
