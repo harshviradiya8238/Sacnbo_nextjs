@@ -50,7 +50,7 @@ function Address() {
         lg={6}
         display="flex"
         alignItems="center"
-        sx={{ height: "90vh" }}
+        sx={{ height: "100vh" }}
       >
         {/* <Grid container display="flex" justifyContent="center"> */}
         <Grid item xs={12} lg={12} xl={12}>

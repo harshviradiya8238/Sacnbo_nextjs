@@ -1,11 +1,19 @@
-import React from 'react';
+import React from "react";
 import Image from "next/image";
-import { Typography, IconButton, Menu, MenuItem, Button, Box, Tooltip } from '@mui/material';
-import FeatherIcon from 'feather-icons-react';
-import DashboardCard from '../../baseCard/DashboardCard';
-import background2x from '../../../../assets/images/backgrounds/blog-bg-2x.jpg';
+import {
+  Typography,
+  IconButton,
+  Menu,
+  MenuItem,
+  Button,
+  Box,
+  Tooltip,
+} from "@mui/material";
+import FeatherIcon from "feather-icons-react";
+import DashboardCard from "../../baseCard/DashboardCard";
+import background2x from "../../../../assets/images/backgrounds/blog-bg-2x.jpg";
 
-const options = ['Action', 'Another Action', 'Something else here'];
+const options = ["Action", "Another Action", "Something else here"];
 
 const BlogCard = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -24,7 +32,7 @@ const BlogCard = () => {
         <Box>
           <Tooltip title="Action">
             <IconButton
-              aria-expanded={open ? 'true' : undefined}
+              aria-expanded={open ? "true" : undefined}
               aria-haspopup="true"
               onClick={handleClick}
               size="large"
@@ -36,14 +44,18 @@ const BlogCard = () => {
           <Menu
             id="long-menu"
             MenuListProps={{
-              'aria-labelledby': 'long-button',
+              "aria-labelledby": "long-button",
             }}
             anchorEl={anchorEl}
             open={open}
             onClose={handleClose}
           >
             {options.map((option) => (
-              <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose}>
+              <MenuItem
+                key={option}
+                selected={option === "Pyxis"}
+                onClick={handleClose}
+              >
                 {option}
               </MenuItem>
             ))}
@@ -51,7 +63,7 @@ const BlogCard = () => {
         </Box>
       }
     >
-      <Image src={background2x} alt="img"/>
+      <Image src={background2x} alt="img" />
 
       <Typography
         variant="h4"
@@ -68,12 +80,12 @@ const BlogCard = () => {
       <Typography
         color="textSecondary"
         sx={{
-          fontSize: '14px',
+          fontSize: "14px",
           mt: 2,
         }}
       >
-        This will be the small description for the news you have shown here. There could be some
-        great info.
+        This will be the small description for the news you have shown here.
+        There could be some great info.
       </Typography>
       <Button
         sx={{

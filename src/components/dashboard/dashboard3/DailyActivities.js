@@ -1,45 +1,52 @@
-import React from 'react';
-import FeatherIcon from 'feather-icons-react';
-import { Menu, MenuItem, IconButton, Typography, Box, Tooltip } from '@mui/material';
+import React from "react";
+import FeatherIcon from "feather-icons-react";
 import {
-  Timeline,
-  TimelineItem,
-  TimelineSeparator,
-  TimelineConnector,
-  TimelineContent,
-  TimelineDot,
-  TimelineOppositeContent,
-} from '@mui/lab';
+  Menu,
+  MenuItem,
+  IconButton,
+  Typography,
+  Box,
+  Tooltip,
+} from "@mui/material";
+// import {
+//   Timeline,
+//   TimelineItem,
+//   TimelineSeparator,
+//   TimelineConnector,
+//   TimelineContent,
+//   TimelineDot,
+//   TimelineOppositeContent,
+// } from '@mui/lab';
 
-import DashboardCard from '../../baseCard/DashboardCard';
+import DashboardCard from "../../baseCard/DashboardCard";
 
-const options = ['Action', 'Another Action', 'Something else here'];
+const options = ["Action", "Another Action", "Something else here"];
 
 const activities = [
   {
-    time: '09.50',
-    color: 'primary.main',
-    text: 'Payment received from John Doe of $385.90',
+    time: "09.50",
+    color: "primary.main",
+    text: "Payment received from John Doe of $385.90",
   },
   {
-    time: '09.46',
-    color: 'secondary.main',
-    text: 'Project Meeting',
+    time: "09.46",
+    color: "secondary.main",
+    text: "Project Meeting",
   },
   {
-    time: '09.47',
-    color: 'warning.main',
-    text: 'New sale recorded #ML-3467',
+    time: "09.47",
+    color: "warning.main",
+    text: "New sale recorded #ML-3467",
   },
   {
-    time: '09.48',
-    color: 'error.main',
-    text: 'Payment was made of $64.95 to Michael Anderson',
+    time: "09.48",
+    color: "error.main",
+    text: "Payment was made of $64.95 to Michael Anderson",
   },
   {
-    time: '09.49',
-    color: 'success.main',
-    text: 'New payment receipt created for Alphanso Golvo',
+    time: "09.49",
+    color: "success.main",
+    text: "New payment receipt created for Alphanso Golvo",
   },
 ];
 
@@ -60,7 +67,7 @@ const DailyActivities = () => {
         <Box>
           <Tooltip title="Action">
             <IconButton
-              aria-expanded={open ? 'true' : undefined}
+              aria-expanded={open ? "true" : undefined}
               aria-haspopup="true"
               onClick={handleClick}
               size="large"
@@ -72,22 +79,26 @@ const DailyActivities = () => {
           <Menu
             id="long-menu"
             MenuListProps={{
-              'aria-labelledby': 'long-button',
+              "aria-labelledby": "long-button",
             }}
             anchorEl={anchorEl}
             open={open}
             onClose={handleClose}
             anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'right',
+              vertical: "bottom",
+              horizontal: "right",
             }}
             transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
+              vertical: "top",
+              horizontal: "right",
             }}
           >
             {options.map((option) => (
-              <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose}>
+              <MenuItem
+                key={option}
+                selected={option === "Pyxis"}
+                onClick={handleClose}
+              >
                 {option}
               </MenuItem>
             ))}
@@ -95,7 +106,7 @@ const DailyActivities = () => {
         </Box>
       }
     >
-      <Timeline
+      {/* <Timeline
         sx={{
           p: 0,
           mb: 0,
@@ -132,7 +143,7 @@ const DailyActivities = () => {
             </TimelineContent>
           </TimelineItem>
         ))}
-      </Timeline>
+      </Timeline> */}
     </DashboardCard>
   );
 };

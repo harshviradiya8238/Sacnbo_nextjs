@@ -17,7 +17,7 @@ import CustomFormLabel from "../../src/components/forms/custom-elements/CustomFo
 import img1 from "../../assets/images/backgrounds/scanbosecond.svg";
 import LogoIcon from "../../src/layouts/logo/LogoIcon";
 
-import { GoogleLogin } from "react-google-login";
+// import { GoogleLogin } from "react-google-login";
 
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
@@ -430,7 +430,7 @@ const Register = () => {
                       </Box>
                     </Button> */}
 
-                    <GoogleLogin
+                    {/* <GoogleLogin
                       clientId={clientId}
                       buttonText="Login"
                       onSuccess={onSuccess}
@@ -438,7 +438,7 @@ const Register = () => {
                       className={classes.google_button}
                       cookiePolicy={"single_host_origin"}
                       isSignedIn={true}
-                    />
+                    /> */}
                   </Box>
                   <Box>
                     <Button

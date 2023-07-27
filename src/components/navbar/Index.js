@@ -16,7 +16,12 @@ import LogoIcon from "../../../src/layouts/logo/LogoIcon";
 import Link from "next/link";
 
 const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = [
+  { lable: "Profile", url: "/userProfile/userDetails" },
+  { lable: "Account", url: "/userProfile/account" },
+  { lable: "Dashboard", url: "/userProfile/userDetails" },
+  { lable: "Logout", url: "/userProfile/userDetails" },
+];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -38,32 +43,31 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar
-      position="static"
-      sx={{
-        background: (theme) =>
-          `${theme.palette.mode === "dark" ? "#1c1f25" : "#E5EDF5"}`,
-        boxShadow:
-          " 4px 2px 16px 0px rgba(95, 157, 231, 0.48), -4px -2px 16px 0px #FFF",
-        //   borderRadius: "20px",
-        color: "black",
-      }}
-    >
+    <AppBar position="static">
       <div
-        maxWidth="xl"
         style={{
           justifyContent: "center",
-          // height: "fit-content",
-          boxShadow:
-            " 4px 2px 16px 0px rgba(95, 157, 231, 0.48), -4px -2px 16px 0px #FFF",
-          //   borderRadius: "20px",
-          color: "black",
-          zIndex: "999",
-          background: (theme) =>
-            `${theme.palette.mode === "dark" ? "#1c1f25" : "#E5EDF5"}`,
         }}
       >
-        <Toolbar disableGutters>
+        <Toolbar
+          disableGutters
+          sx={{
+            justifyContent: "center",
+            // height: "fit-content",
+            boxShadow:
+              " 4px 2px 16px 0px rgba(95, 157, 231, 0.48), -4px -2px 16px 0px #FFF",
+            //   borderRadius: "20px",
+            color: "black",
+            overflow: "hidden",
+
+            position: "fixed",
+            top: 0,
+            width: "100%",
+            zIndex: "999",
+            background: (theme) =>
+              `${theme.palette.mode === "dark" ? "#1c1f25" : "#E5EDF5"}`,
+          }}
+        >
           <div>
             <LogoIcon
               sx={{
@@ -72,24 +76,6 @@ function ResponsiveAppBar() {
               }}
             />
           </div>
-
-          {/* <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography> */}
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -168,8 +154,10 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting, index) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                <MenuItem key={index} onClick={handleCloseUserMenu}>
+                  <Link href={setting.url}>
+                    <Typography textAlign="center">{setting.lable}</Typography>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>

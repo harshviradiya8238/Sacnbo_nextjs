@@ -1,9 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { alpha, styled } from "@mui/material/styles";
-import TreeView from "@mui/lab/TreeView";
-import TreeItem, { treeItemClasses } from "@mui/lab/TreeItem";
-import { animated } from "react-spring/dist/react-spring.cjs";
+// import { TreeView, treeItemClasses, TreeItem } from "@mui/lab";
+import { animated } from "react-spring";
 import { Card, Collapse } from "@mui/material";
 import FeatherIcon from "feather-icons-react";
 
@@ -65,25 +64,25 @@ TransitionComponent.propTypes = {
   in: PropTypes.bool,
 };
 
-const StyledTreeItem = styled((props) => (
-  <TreeItem {...props} TransitionComponent={TransitionComponent} />
-))(({ theme }) => ({
-  [`& .${treeItemClasses.iconContainer}`]: {
-    "& .close": {
-      opacity: 0.3,
-    },
-  },
-  [`& .${treeItemClasses.group}`]: {
-    marginLeft: 15,
-    paddingLeft: 18,
-    borderLeft: `1px dashed ${alpha(theme.palette.text.primary, 0.4)}`,
-  },
-}));
+// const StyledTreeItem = styled((props) => (
+//   <TreeItem {...props} TransitionComponent={TransitionComponent} />
+// ))(({ theme }) => ({
+//   [`& .${treeItemClasses.iconContainer}`]: {
+//     "& .close": {
+//       opacity: 0.3,
+//     },
+//   },
+//   [`& .${treeItemClasses.group}`]: {
+//     marginLeft: 15,
+//     paddingLeft: 18,
+//     borderLeft: `1px dashed ${alpha(theme.palette.text.primary, 0.4)}`,
+//   },
+// }));
 
 const Treeview = () => {
   return (
     <Card>
-      <TreeView
+      {/* <TreeView
         aria-label="customized"
         defaultExpanded={["1"]}
         defaultCollapseIcon={<MinusSquare />}
@@ -105,7 +104,7 @@ const Treeview = () => {
           <StyledTreeItem nodeId="4" label="World" />
           <StyledTreeItem nodeId="5" label="Something something" />
         </StyledTreeItem>
-      </TreeView>
+      </TreeView> */}
     </Card>
   );
 };

@@ -1,20 +1,20 @@
 import React from "react";
 import { Card, Typography, Box } from "@mui/material";
-import {
-  Timeline,
-  TimelineItem,
-  TimelineSeparator,
-  TimelineConnector,
-  TimelineContent,
-  TimelineOppositeContent,
-  TimelineDot,
-} from "@mui/lab";
+// import {
+//   Timeline,
+//   TimelineItem,
+//   TimelineSeparator,
+//   TimelineConnector,
+//   TimelineContent,
+//   TimelineOppositeContent,
+//   TimelineDot,
+// } from "@mui/lab";
 import FeatherIcon from "feather-icons-react";
 
 const CustomTimeline = () => {
   return (
     <Card>
-      <Timeline position="alternate" sx={{ color: "rgba(0, 0, 0, 0.87)" }}>
+      {/* <Timeline position="alternate" sx={{ color: "rgba(0, 0, 0, 0.87)" }}>
         <TimelineItem>
           <TimelineOppositeContent
             sx={{ m: "auto 0" }}
@@ -172,7 +172,7 @@ const CustomTimeline = () => {
             </Box>
           </TimelineContent>
         </TimelineItem>
-      </Timeline>
+      </Timeline> */}
     </Card>
   );
 };

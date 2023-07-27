@@ -69,24 +69,21 @@ function Account() {
               <Box style={{ marginBottom: "15px" }}>
                 <CustomFormLabel>Account SID</CustomFormLabel>
                 <CustomTextField
-                  variant="outlined"
                   fullWidth
-                  // disabled
-                  // style={{background:"none"}}
-                  label="AC709b7aa8f92f9ca96c0a726e336825ac"
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <IconButton
-                        aria-label="toggle password visibility"
-                        // onClick={handleClickShowPassword}
-                        // onMouseDown={handleMouseDownPassword}
-                        edge="end"
-                      >
-                        adasdad
-                        <ContentCopyIcon style={{ color: "red" }} />
-                      </IconButton>
-                    </InputAdornment>
-                  }
+                  defaultValue="AC709b7aa8f92f9ca96c0a726e336825ac"
+                  disabled
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="start">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          edge="end"
+                        >
+                          <ContentCopyIcon />
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
                 />
                 <Box>
                   <CustomFormLabel>Auth Token</CustomFormLabel>
@@ -94,6 +91,19 @@ function Account() {
                     <CustomTextField
                       fullWidth
                       variant="outlined"
+                      disabled
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="start">
+                            <IconButton
+                              aria-label="toggle password visibility"
+                              edge="end"
+                            >
+                              <ContentCopyIcon />
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                      }}
                       defaultValue="498817d5ee03730b408f44a9b2116ec5"
                       type={showPassword ? "text" : "password"}
                     />
