@@ -16,9 +16,10 @@ const CustomTextField = styled((props) => <TextField {...props} />)(
       borderColor: `${
         theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0.12)" : "#dee3e9"
       }`,
-      borderRadius: "20px",
-      border: " 2px solid rgba(255, 255, 255, 0.20)",
-
+      backgroundColor: "#E5EDF5",
+      borderRadius: "20px !important",
+      border: " 2px solid rgba(255, 255, 255, 0.20) !important",
+      // opacity: "30%",
       boxShadow:
         " 4px 2px 8px 0px rgba(95, 157, 231, 0.48) inset, -4px -2px 8px 0px #FFF inset",
     },

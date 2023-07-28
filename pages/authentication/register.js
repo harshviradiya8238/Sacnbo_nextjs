@@ -17,7 +17,7 @@ import CustomFormLabel from "../../src/components/forms/custom-elements/CustomFo
 import img1 from "../../assets/images/backgrounds/scanbosecond.svg";
 import LogoIcon from "../../src/layouts/logo/LogoIcon";
 
-// import { GoogleLogin } from "react-google-login";
+import { GoogleLogin } from "react-google-login";
 
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
@@ -28,6 +28,7 @@ import EmailForm from "../forms/email-form";
 import { useState } from "react";
 import PhoneForm from "../forms/phone-form";
 import CustomeButton from "../../src/components/forms/button/CustomeButton";
+import CustomAuthButton from "../../src/components/forms/button/CustomAuthButton";
 // import { gapi } from "gapi-script";
 
 const useStyles = makeStyles({
@@ -168,7 +169,7 @@ const Register = () => {
               }}
             >
               <Typography fontWeight="700" variant="h1">
-                Welcome to Dequity
+                Welcome to dequity
               </Typography>
               <Box display="flex" alignItems="center">
                 <Typography
@@ -217,7 +218,9 @@ const Register = () => {
                         width: "100%",
 
                         height: "60px",
-                        borderRadius: "10px",
+                        borderRadius: "20px",
+                        border:
+                          "2px solid rgba(255, 255, 255, 0.20) !important",
                         boxShadow:
                           "4px 2px 8px 0px rgba(95, 157, 231, 0.48) inset, -4px -2px 8px 0px #FFF inset",
                         borderColor: (theme) =>
@@ -261,7 +264,7 @@ const Register = () => {
                               }`,
                           }}
                         >
-                          Sign Up with Mobile
+                          Sign up with Mobile
                         </Typography>
                       </Box>
                     </Button>
@@ -277,7 +280,9 @@ const Register = () => {
                       sx={{
                         width: "100%",
                         height: "60px",
-                        borderRadius: "10px",
+                        borderRadius: "20px",
+                        border:
+                          "2px solid rgba(255, 255, 255, 0.20) !important",
                         boxShadow:
                           "4px 2px 8px 0px rgba(95, 157, 231, 0.48) inset, -4px -2px 8px 0px #FFF inset",
                         borderColor: (theme) =>
@@ -322,7 +327,7 @@ const Register = () => {
                               }`,
                           }}
                         >
-                          Sign Up with Email
+                          Sign up with Email
                         </Typography>
                       </Box>
                     </Button>
@@ -340,7 +345,7 @@ const Register = () => {
                           `${
                             theme.palette.mode === "dark"
                               ? "#42464d"
-                              : "#ecf0f2"
+                              : "#9fb4bf"
                           }`,
                         height: "1px",
                         width: "100%",
@@ -366,11 +371,116 @@ const Register = () => {
                           }`,
                       }}
                     >
-                      or sign in with
+                      or sign up with
                     </Typography>
                   </Box>
+                  <Box
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      // margin: "10px",
+                      width: "60%",
+                      margin: "0 auto",
+                    }}
+                  >
+                    {/* <Button
+                      variant="outlined"
+                      size="large"
+                      display="flex"
+                      alignitems="center"
+                      justifycontent="center"
+                      onClick={handleGoogleSignIn}
+                      sx={{
+                        width: "100%",
+                        height: "60px",
+                        borderRadius: "20px",
+                        boxShadow:
+                          "4px 2px 8px 0px rgba(95, 157, 231, 0.48) inset, -4px -2px 8px 0px #FFF inset",
+                        borderColor: (theme) =>
+                          `${
+                            theme.palette.mode === "dark"
+                              ? "#42464d"
+                              : "#dde3e8"
+                          }`,
+                        borderWidth: "2px",
+                        textAlign: "center",
+                        mt: 2,
+                        pt: "10px",
+                        pb: "10px",
+                        "&:hover": {
+                          borderColor: (theme) =>
+                            `${
+                              theme.palette.mode === "dark"
+                                ? "#42464d"
+                                : "#dde3e8"
+                            }`,
+                          borderWidth: "2px",
+                        },
+                      }}
+                    >
+                      <Box display="flex" alignItems="center">
+                        <GoogleIcon
+                          sx={{
+                            color: (theme) => theme.palette.error.main,
+                          }}
+                        />
+                        <Typography
+                          variant="h6"
+                          sx={{
+                            ml: 1,
+                            fontSize: "17px",
+                            color: (theme) =>
+                              `${
+                                theme.palette.mode === "dark"
+                                  ? theme.palette.grey.A200
+                                  : "#13152a"
+                              }`,
+                          }}
+                        >
+                          Google
+                        </Typography>
+                      </Box>
+                    </Button> */}
+                    {/* 
+                    <GoogleLogin
+                      clientId={clientId}
+                      buttonText="Login"
+                      onSuccess={onSuccess}
+                      onFailure={onFailure}
+                      theme="outline"
+                      shape="square"
+                      className="google-button"
+                      // className={classes.google_button}
+                      cookiePolicy={"single_host_origin"}
+                      isSignedIn={true}
+                    /> */}
 
-                  <Box>
+                    <CustomAuthButton>
+                      <img
+                        src="/static/images/loginLogo/google.png"
+                        className="LoginLogs"
+                      />
+                      {/* <GoogleIcon
+                        sx={{
+                          color: (theme) => theme.palette.error.main,
+                        }}
+                      /> */}
+                    </CustomAuthButton>
+                    <CustomAuthButton>
+                      <img
+                        src="/static/images/loginLogo/microsoft.png"
+                        className="LoginLogs"
+                      />
+                    </CustomAuthButton>
+                    <CustomAuthButton>
+                      <img
+                        src="/static/images/loginLogo/apple.png"
+                        className="LoginLogs"
+                      />
+                    </CustomAuthButton>
+                  </Box>
+                  {/* <Box>
                     <Button
                       variant="outlined"
                       size="large"
@@ -380,7 +490,7 @@ const Register = () => {
                       sx={{
                         width: "100%",
                         height: "60px",
-                        borderRadius: "10px",
+                        borderRadius: "20px",
                         boxShadow:
                           "4px 2px 8px 0px rgba(95, 157, 231, 0.48) inset, -4px -2px 8px 0px #FFF inset",
                         borderColor: (theme) =>
@@ -428,8 +538,8 @@ const Register = () => {
                         </Typography>
                       </Box>
                     </Button>
-                  </Box>
-                  <Box>
+                  </Box> */}
+                  {/* <Box>
                     <Button
                       variant="outlined"
                       size="large"
@@ -439,7 +549,7 @@ const Register = () => {
                       sx={{
                         width: "100%",
                         height: "60px",
-                        borderRadius: "10px",
+                        borderRadius: "20px",
                         boxShadow:
                           "4px 2px 8px 0px rgba(95, 157, 231, 0.48) inset, -4px -2px 8px 0px #FFF inset",
                         borderColor: (theme) =>
@@ -487,7 +597,7 @@ const Register = () => {
                         </Typography>
                       </Box>
                     </Button>
-                  </Box>
+                  </Box> */}
                 </Box>
               )}
             </Box>

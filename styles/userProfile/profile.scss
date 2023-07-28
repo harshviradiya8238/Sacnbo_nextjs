@@ -5,3 +5,49 @@
     box-shadow: 4px 2px 16px 0px rgba(95, 157, 231, 0.48), -4px -2px 16px 0px #FFF;
     border-radius: 20px;
 }
+
+.google-button {
+    /* Customize the width and height to change the button's size */
+    width: auto;
+    height: 70px;
+    width: 70px;
+    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, .24), 2px 2px 8px 0px rgba(0, 0, 0, .24) !important;
+    background-color: #E5EDF5 !important;
+    color: black !important;
+    /* Customize the border radius to change the button's shape */
+    border-radius: 25px;
+    /* Add any other custom styles you want */
+    // background-color: #db4437 !important; /* Google red color */
+    color: white;
+    border: none;
+    border-radius: 50% !important;
+    padding: 10px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+    div{
+        background-color: #E5EDF5 !important;
+        border-radius: 50% !important;
+        margin-right: 0px !important;
+    }
+    span{
+        display: none;
+    }
+  }
+  
+  /* Optional: Add additional styles for hover and focus states */
+  .google-button:hover {
+    background-color: #c5372b;
+  }
+  
+  .google-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(219, 68, 55, 0.5);
+  }
+
+  .LoginLogs{
+    height: 30px;
+  }

@@ -123,7 +123,7 @@ const Login = () => {
               }}
             >
               <Typography fontWeight="700" variant="h2">
-                Welcome to Dequity
+                Welcome to dequity
               </Typography>
               <Box display="flex" alignItems="center">
                 <Typography
@@ -285,6 +285,8 @@ const Login = () => {
                               width: "100%",
                               height: "60px",
                               borderRadius: "20px",
+                              border:
+                                "2px solid rgba(255, 255, 255, 0.20) !important",
                               boxShadow:
                                 "4px 2px 8px 0px rgba(95, 157, 231, 0.48) inset, -4px -2px 8px 0px #FFF inset",
                               borderColor: (theme) =>
@@ -346,6 +348,8 @@ const Login = () => {
                               width: "100%",
                               height: "60px",
                               borderRadius: "20px",
+                              border:
+                                "2px solid rgba(255, 255, 255, 0.20) !important",
                               boxShadow:
                                 "4px 2px 8px 0px rgba(95, 157, 231, 0.48) inset, -4px -2px 8px 0px #FFF inset",
                               borderColor: (theme) =>
@@ -406,6 +410,8 @@ const Login = () => {
                             width: "100%",
                             height: "60px",
                             borderRadius: "20px",
+                            border:
+                              "2px solid rgba(255, 255, 255, 0.20) !important",
                             boxShadow:
                               "4px 2px 8px 0px rgba(95, 157, 231, 0.48) inset, -4px -2px 8px 0px #FFF inset",
                             borderColor: (theme) =>
