@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import TimerIcon from "@mui/icons-material/Timer";
 
 const OtpTimer = ({ isOtpSent, handleResendOtp }) => {
-  const [timer, setTimer] = useState(5); // Set initial timer value to 60 seconds
+  const [timer, setTimer] = useState(60); // Set initial timer value to 60 seconds
 
   useEffect(() => {
     if (isOtpSent) {

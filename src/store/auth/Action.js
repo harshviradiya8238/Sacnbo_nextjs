@@ -9,7 +9,7 @@ import {
 import Notification from "../../components/notification/Notification";
 
 export const registerAction = (data, signUpType) => async (dispatch) => {
-  const passData = {
+  const registerPayload = {
     firstName: data.firstName,
     lastName: data.lastName,
     email: data.email,
@@ -19,7 +19,7 @@ export const registerAction = (data, signUpType) => async (dispatch) => {
   };
 
   try {
-    const res = await API.post("", passData, {
+    const res = await API.post("", registerPayload, {
       headers: {
         encryptedkey: "U2FsdGVkX183zZX4dBohxl/jSCy1KP7O91W1G+ncMYk=",
       },

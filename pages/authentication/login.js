@@ -186,9 +186,6 @@ const Login = () => {
                             id="email"
                             variant="outlined"
                             fullWidth
-                            // onBlur={handleBlur}
-                            // onChange={handleChange}
-                            // error={touched.email && errors.email}
                             name="email"
                           />
                           {/* {errors.email && touched.email ? (
@@ -201,74 +198,14 @@ const Login = () => {
                             id="password"
                             variant="outlined"
                             name="password"
-                            // onBlur={handleBlur}
-                            // onChange={handleChange}
                             fullWidth
-                            // type={showPassword ? "text" : "password"}
-                            // error={touched.password && errors.password}
                             sx={{
                               pb: "15px",
                             }}
-                            // endAdornment={
-                            //   <InputAdornment position="end">
-                            //     <IconButton
-                            //       aria-label="toggle password visibility"
-                            //       onClick={handleClickShowPassword}
-                            //       onMouseDown={handleMouseDownPassword}
-                            //       edge="end"
-                            //     >
-                            //       {showPassword ? (
-                            //         <VisibilityOff />
-                            //       ) : (
-                            //         <Visibility />
-                            //       )}
-                            //     </IconButton>
-                            //   </InputAdornment>
-                            // }
                           />
-                          {/* {errors.password && touched.password ? (
-                            <div style={{ color: "red", marginBottom: "10px" }}>
-                              {errors.password}
-                            </div>
-                          ) : null} */}
                         </>
                       )}
-                      {
-                        signupMethod === "phone" && <PhoneForm />
-                        // <>
-                        //   <CustomFormLabel htmlFor="phone">
-                        //     Phone
-                        //   </CustomFormLabel>
-                        //   <CustomTextField
-                        //     id="phone"
-                        //     variant="outlined"
-                        //     fullWidth
-                        //     onBlur={handleBlur}
-                        //     onChange={handleChange}
-                        //     name="phone"
-                        //     error={touched.phone && errors.phone}
-                        //   />
-                        //   {errors.phone && touched.phone ? (
-                        //     <div style={{ color: "red" }}>{errors.phone}</div>
-                        //   ) : null}
-                        //   <CustomFormLabel htmlFor="otp">OTP</CustomFormLabel>
-                        //   <CustomTextField
-                        //     id="otp"
-                        //     variant="outlined"
-                        //     name="otp"
-                        //     onBlur={handleBlur}
-                        //     onChange={handleChange}
-                        //     error={touched.otp && errors.otp}
-                        //     fullWidth
-                        //     sx={{
-                        //       pb: "15px",
-                        //     }}
-                        //   />
-                        //   {errors.otp && touched.otp ? (
-                        //     <div style={{ color: "red" }}>{errors.otp}</div>
-                        //   ) : null}
-                        // </>
-                      }
+                      {signupMethod === "phone" && <PhoneForm />}
 
                       {/* <NextLink href="/"> */}
                       {signupMethod === "email" && (
@@ -516,117 +453,6 @@ const Login = () => {
                           </Box>
                         </Button>
                       </Box>
-
-                      {/* <Grid container spacing={2}>
-                      <Grid item xs={12} sm={6} lg={6}>
-                        <Button
-                          variant="outlined"
-                          size="large"
-                          display="flex"
-                          alignitems="center"
-                          justifycontent="center"
-                          sx={{
-                            width: "100%",
-                            borderColor: (theme) =>
-                              `${
-                                theme.palette.mode === "dark"
-                                  ? "#42464d"
-                                  : "#dde3e8"
-                              }`,
-                            borderWidth: "2px",
-                            textAlign: "center",
-                            mt: 2,
-                            pt: "10px",
-                            pb: "10px",
-                            "&:hover": {
-                              borderColor: (theme) =>
-                                `${
-                                  theme.palette.mode === "dark"
-                                    ? "#42464d"
-                                    : "#dde3e8"
-                                }`,
-                              borderWidth: "2px",
-                            },
-                          }}
-                        >
-                          <Box display="flex" alignItems="center">
-                            <FacebookIcon
-                              sx={{
-                                color: (theme) => theme.palette.secondary.main,
-                              }}
-                            />
-                            <Typography
-                              variant="h6"
-                              sx={{
-                                ml: 1,
-                                color: (theme) =>
-                                  `${
-                                    theme.palette.mode === "dark"
-                                      ? theme.palette.grey.A200
-                                      : "#13152a"
-                                  }`,
-                              }}
-                            >
-                              Facebook
-                            </Typography>
-                          </Box>
-                        </Button>
-                      </Grid>
-                      <Grid item xs={12} sm={6} lg={6}>
-                        <Button
-                          variant="outlined"
-                          size="large"
-                          display="flex"
-                          alignitems="center"
-                          justifycontent="center"
-                          sx={{
-                            width: "100%",
-                            borderColor: (theme) =>
-                              `${
-                                theme.palette.mode === "dark"
-                                  ? "#42464d"
-                                  : "#dde3e8"
-                              }`,
-                            borderWidth: "2px",
-                            textAlign: "center",
-                            mt: 2,
-                            pt: "10px",
-                            pb: "10px",
-                            "&:hover": {
-                              borderColor: (theme) =>
-                                `${
-                                  theme.palette.mode === "dark"
-                                    ? "#42464d"
-                                    : "#dde3e8"
-                                }`,
-                              borderWidth: "2px",
-                            },
-                          }}
-                        >
-                          <Box display="flex" alignItems="center">
-                            <TwitterIcon
-                              sx={{
-                                color: (theme) => theme.palette.primary.main,
-                              }}
-                            />
-                            <Typography
-                              variant="h6"
-                              sx={{
-                                ml: 1,
-                                color: (theme) =>
-                                  `${
-                                    theme.palette.mode === "dark"
-                                      ? theme.palette.grey.A200
-                                      : "#13152a"
-                                  }`,
-                              }}
-                            >
-                              Twitter
-                            </Typography>
-                          </Box>
-                        </Button>
-                      </Grid>
-                    </Grid>  */}
                     </Box>
                   </Form>
                 )}

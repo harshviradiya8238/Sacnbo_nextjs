@@ -1,37 +1,8 @@
 import React, { useState } from "react";
-import {
-  Grid,
-  Box,
-  Typography,
-  MenuItem,
-  FormGroup,
-  FormControlLabel,
-  Button,
-  IconButton,
-} from "@mui/material";
-import NextLink from "next/link";
-import Image from "next/image";
-
-import GoogleIcon from "@mui/icons-material/Google";
-import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
-import EmailIcon from "@mui/icons-material/Email";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import Link from "next/link";
+import { Grid, Box, MenuItem } from "@mui/material";
 
 import CustomTextField from "../../src/components/forms/custom-elements/CustomTextField";
 import CustomFormLabel from "../../src/components/forms/custom-elements/CustomFormLabel";
-import InputAdornment from "@mui/material/InputAdornment";
-import LaunchIcon from "@mui/icons-material/Launch";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-
-import ReportProblemIcon from "@mui/icons-material/ReportProblem";
-import img1 from "../../assets/images/backgrounds/scanbosecond.svg";
-import LogoIcon from "../../src/layouts/logo/LogoIcon";
-
-import { Formik, Form, Field } from "formik";
-import * as Yup from "yup";
-import PhoneForm from "../forms/phone-form";
 import CustomeButton from "../../src/components/forms/button/CustomeButton";
 import CustomSelect from "../../src/components/forms/custom-elements/CustomSelect";
 
@@ -79,9 +50,11 @@ function UserDetails() {
                     <h2>User Settings</h2>
                     <Box className="avtar">
                       <img
-                        src="https://i2.wp.com/www.twilio.com/resources/images/gravatar/default.png?ssl=1"
+                        src="/static/images/users/avtar2.png"
                         style={{
                           p: 4,
+                          maxHeight: "100%",
+
                           boxShadow:
                             " 4px 2px 16px 0px rgba(95, 157, 231, 0.48), -4px -2px 16px 0px #FFF",
                           borderRadius: "20px",
@@ -129,7 +102,7 @@ function UserDetails() {
                       </CustomeButton>
                       <Grid item xs={12} lg={12} xl={12}>
                         <Box>
-                          <CustomFormLabel>Last Name </CustomFormLabel>
+                          <CustomFormLabel>Email </CustomFormLabel>
                           <Box style={{ display: "flex" }}>
                             <CustomTextField
                               fullWidth
@@ -140,21 +113,23 @@ function UserDetails() {
                           </Box>
                         </Box>
                       </Grid>
-                      <CustomeButton
-                        color="secondary"
-                        variant="contained"
-                        type="submit"
-                        style={{
-                          background: "#6f31f7",
-                        }}
-                        sx={{
-                          pb: "10px",
-                          width: "50%",
-                          margin: "auto",
-                        }}
-                      >
-                        Update Email Address
-                      </CustomeButton>
+                      <Box sx={{ display: "flex", width: "100%" }}>
+                        <CustomeButton
+                          color="secondary"
+                          variant="contained"
+                          type="submit"
+                          style={{
+                            background: "#6f31f7",
+                          }}
+                          sx={{
+                            // margin: "10px",
+                            width: "98%",
+                            margin: "auto",
+                          }}
+                        >
+                          Update Email Address
+                        </CustomeButton>
+                      </Box>
                     </Grid>
                   </Box>
                 </Grid>
@@ -184,7 +159,12 @@ function UserDetails() {
                   </Box>
                 </Grid>
                 <Grid item xs={12} lg={8} xl={8}>
-                  <Box sx={{ display: "flex", width: "100%" }}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      width: "98%",
+                    }}
+                  >
                     <CustomeButton
                       color="secondary"
                       variant="contained"
@@ -193,7 +173,7 @@ function UserDetails() {
                         background: "#6f31f7",
                       }}
                       sx={{
-                        pb: "10px",
+                        // pb: "10px",
                         width: "50%",
                         margin: "auto",
                       }}
@@ -229,7 +209,7 @@ function UserDetails() {
                     sx={{
                       display: "flex",
                       flexDirection: "column",
-                      width: "100%",
+                      width: "98%",
                       justifyContent: "center",
                       alignItems: "center",
                     }}
@@ -350,7 +330,7 @@ function UserDetails() {
                         sx={{
                           display: "flex",
                           mt: "5px",
-                          width: "100%",
+                          width: "98%",
                           justifyContent: "center",
                           alignItems: "center",
                         }}

@@ -16,7 +16,7 @@ function CustomeButton(props) {
         // // width: "100%",
         // color: "black",
         // padding: " 7px 21px",
-
+        width: "230px",
         borderRadius: "20px",
         border: " 2px solid rgba(255, 255, 255, 0.20)",
         background: "#b8b2fc",

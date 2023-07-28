@@ -1,36 +1,12 @@
 import React, { useState } from "react";
-import {
-  Grid,
-  Box,
-  Typography,
-  FormGroup,
-  FormControlLabel,
-  Button,
-  IconButton,
-} from "@mui/material";
-import NextLink from "next/link";
-import Image from "next/image";
-
-import GoogleIcon from "@mui/icons-material/Google";
-import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
-import EmailIcon from "@mui/icons-material/Email";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { Grid, Box, Button, IconButton } from "@mui/material";
 import Link from "next/link";
-
 import CustomTextField from "../../src/components/forms/custom-elements/CustomTextField";
 import CustomFormLabel from "../../src/components/forms/custom-elements/CustomFormLabel";
 import InputAdornment from "@mui/material/InputAdornment";
 import LaunchIcon from "@mui/icons-material/Launch";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-
 import ReportProblemIcon from "@mui/icons-material/ReportProblem";
-import img1 from "../../assets/images/backgrounds/scanbosecond.svg";
-import LogoIcon from "../../src/layouts/logo/LogoIcon";
-
-import { Formik, Form, Field } from "formik";
-import * as Yup from "yup";
-import PhoneForm from "../forms/phone-form";
 import CustomeButton from "../../src/components/forms/button/CustomeButton";
 
 function Account() {

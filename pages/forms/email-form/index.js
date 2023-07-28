@@ -300,11 +300,24 @@ function EmailForm() {
                 renderInput={(props) => <input {...props} />}
               />
             </div>
-            <Button
-              style={{ color: "#7352ff", margin: "1.3rem 0", fontSize: "17px" }}
+            <div
+              style={{
+                textAlign: "right",
+                width: "100%",
+                display: "flex",
+                justifyContent: "end",
+              }}
             >
-              Resend OTP
-            </Button>
+              <Button
+                style={{
+                  color: "#7352ff",
+                  margin: "1.3rem 0",
+                  fontSize: "17px",
+                }}
+              >
+                Resend OTP
+              </Button>
+            </div>
 
             <Box style={{ fontSize: "17px" }}>
               <span>Wrong email address?</span>

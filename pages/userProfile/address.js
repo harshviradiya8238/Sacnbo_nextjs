@@ -1,35 +1,12 @@
 import React from "react";
-import {
-  Grid,
-  Box,
-  Typography,
-  FormGroup,
-  FormControlLabel,
-  Button,
-  IconButton,
-} from "@mui/material";
-import NextLink from "next/link";
-import Image from "next/image";
-
-import GoogleIcon from "@mui/icons-material/Google";
-import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
-import EmailIcon from "@mui/icons-material/Email";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { Grid, Box, IconButton } from "@mui/material";
 
 import CustomTextField from "../../src/components/forms/custom-elements/CustomTextField";
 import CustomFormLabel from "../../src/components/forms/custom-elements/CustomFormLabel";
 import InputAdornment from "@mui/material/InputAdornment";
-import LaunchIcon from "@mui/icons-material/Launch";
+
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 
-import ReportProblemIcon from "@mui/icons-material/ReportProblem";
-import img1 from "../../assets/images/backgrounds/scanbosecond.svg";
-import LogoIcon from "../../src/layouts/logo/LogoIcon";
-
-import { Formik, Form, Field } from "formik";
-import * as Yup from "yup";
-import PhoneForm from "../forms/phone-form";
 import CustomeButton from "../../src/components/forms/button/CustomeButton";
 
 function Address() {
@@ -77,25 +54,14 @@ function Address() {
                 <Grid item xs={12} lg={12} xl={12}>
                   <Box>
                     <CustomFormLabel>Country</CustomFormLabel>
-                    <CustomTextField
-                      variant="outlined"
-                      fullWidth
-                      // disabled
-                      // style={{background:"none"}}
-                      // label="AC709b7aa8f92f9ca96c0a726e336825ac"
-                    />
+                    <CustomTextField variant="outlined" fullWidth />
                   </Box>
                 </Grid>
                 <Grid item xs={12} lg={6} xl={6}>
                   <Box>
                     <CustomFormLabel>Address1</CustomFormLabel>
                     <Box style={{ display: "flex" }}>
-                      <CustomTextField
-                        fullWidth
-                        variant="outlined"
-                        //   defaultValue="498817d5ee03730b408f44a9b2116ec5"
-                        //   type={showPassword ? "text" : "password"}
-                      />
+                      <CustomTextField fullWidth variant="outlined" />
                     </Box>
                   </Box>
                 </Grid>
@@ -103,12 +69,7 @@ function Address() {
                   <Box>
                     <CustomFormLabel>Address 2</CustomFormLabel>
                     <Box style={{ display: "flex" }}>
-                      <CustomTextField
-                        fullWidth
-                        variant="outlined"
-                        //   defaultValue="498817d5ee03730b408f44a9b2116ec5"
-                        //   type={showPassword ? "text" : "password"}
-                      />
+                      <CustomTextField fullWidth variant="outlined" />
                     </Box>
                   </Box>
                 </Grid>
@@ -119,15 +80,10 @@ function Address() {
                     <CustomTextField
                       variant="outlined"
                       fullWidth
-                      // disabled
-                      // style={{background:"none"}}
-                      // label="AC709b7aa8f92f9ca96c0a726e336825ac"
                       endAdornment={
                         <InputAdornment position="end">
                           <IconButton
                             aria-label="toggle password visibility"
-                            // onClick={handleClickShowPassword}
-                            // onMouseDown={handleMouseDownPassword}
                             edge="end"
                           >
                             adasdad
@@ -143,12 +99,7 @@ function Address() {
                   <Box>
                     <CustomFormLabel>Province</CustomFormLabel>
                     <Box style={{ display: "flex" }}>
-                      <CustomTextField
-                        fullWidth
-                        variant="outlined"
-                        //   defaultValue="498817d5ee03730b408f44a9b2116ec5"
-                        //   type={showPassword ? "text" : "password"}
-                      />
+                      <CustomTextField fullWidth variant="outlined" />
                     </Box>
                   </Box>
                 </Grid>
@@ -156,12 +107,7 @@ function Address() {
                   <Box>
                     <CustomFormLabel>Postal code</CustomFormLabel>
                     <Box style={{ display: "flex" }}>
-                      <CustomTextField
-                        fullWidth
-                        variant="outlined"
-                        //   defaultValue="498817d5ee03730b408f44a9b2116ec5"
-                        //   type={showPassword ? "text" : "password"}
-                      />
+                      <CustomTextField fullWidth variant="outlined" />
                     </Box>
                   </Box>
                 </Grid>

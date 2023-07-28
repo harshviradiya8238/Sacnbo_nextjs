@@ -83,8 +83,7 @@ const Register = () => {
   const handleEmailFormopen = () => {
     setIsEmail(true);
   };
-  const clientId =
-    "1092938854409-irtfusioh66v37rjuc8ksdlv0hattb57.apps.googleusercontent.com";
+  const clientId = process.env.CLIENTID;
 
   const onSuccess = (res) => {
     console.log("LOGIN SUCCESS! Current user: ", res.profileObj);
@@ -370,76 +369,7 @@ const Register = () => {
                       or sign in with
                     </Typography>
                   </Box>
-                  <Box>
-                    {/* <Button
-                      variant="outlined"
-                      size="large"
-                      display="flex"
-                      alignitems="center"
-                      justifycontent="center"
-                      onClick={handleGoogleSignIn}
-                      sx={{
-                        width: "100%",
-                        height: "60px",
-                        borderRadius: "10px",
-                        boxShadow:
-                          "4px 2px 8px 0px rgba(95, 157, 231, 0.48) inset, -4px -2px 8px 0px #FFF inset",
-                        borderColor: (theme) =>
-                          `${
-                            theme.palette.mode === "dark"
-                              ? "#42464d"
-                              : "#dde3e8"
-                          }`,
-                        borderWidth: "2px",
-                        textAlign: "center",
-                        mt: 2,
-                        pt: "10px",
-                        pb: "10px",
-                        "&:hover": {
-                          borderColor: (theme) =>
-                            `${
-                              theme.palette.mode === "dark"
-                                ? "#42464d"
-                                : "#dde3e8"
-                            }`,
-                          borderWidth: "2px",
-                        },
-                      }}
-                    >
-                      <Box display="flex" alignItems="center">
-                        <GoogleIcon
-                          sx={{
-                            color: (theme) => theme.palette.error.main,
-                          }}
-                        />
-                        <Typography
-                          variant="h6"
-                          sx={{
-                            ml: 1,
-                            fontSize: "17px",
-                            color: (theme) =>
-                              `${
-                                theme.palette.mode === "dark"
-                                  ? theme.palette.grey.A200
-                                  : "#13152a"
-                              }`,
-                          }}
-                        >
-                          Google
-                        </Typography>
-                      </Box>
-                    </Button> */}
 
-                    {/* <GoogleLogin
-                      clientId={clientId}
-                      buttonText="Login"
-                      onSuccess={onSuccess}
-                      onFailure={onFailure}
-                      className={classes.google_button}
-                      cookiePolicy={"single_host_origin"}
-                      isSignedIn={true}
-                    /> */}
-                  </Box>
                   <Box>
                     <Button
                       variant="outlined"

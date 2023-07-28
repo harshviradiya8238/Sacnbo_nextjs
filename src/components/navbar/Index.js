@@ -14,6 +14,8 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import LogoIcon from "../../../src/layouts/logo/LogoIcon";
 import Link from "next/link";
+import Image from "next/image";
+import LogoScanbo from "../../../assets/images/logos/navbardequiteyLogo.svg";
 
 const pages = ["Products", "Pricing", "Blog"];
 const settings = [
@@ -68,14 +70,14 @@ function ResponsiveAppBar() {
               `${theme.palette.mode === "dark" ? "#1c1f25" : "#E5EDF5"}`,
           }}
         >
-          <div>
-            <LogoIcon
-              sx={{
-                display: { xs: "none", md: "flex" },
-                mr: 1,
-              }}
-            />
-          </div>
+          {/* <div style={}> */}
+          <Image
+            src={LogoScanbo}
+            alt={LogoScanbo}
+            // style={{ margin: "auto" }}
+            style={{ minHeight: "60%" }}
+          />
+          {/* </div> */}
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
