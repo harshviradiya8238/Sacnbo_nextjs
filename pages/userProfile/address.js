@@ -51,10 +51,53 @@ function Address() {
             </Box>
             <Box style={{ marginBottom: "15px" }}>
               <Grid container spacing={2}>
-                <Grid item xs={12} lg={12} xl={12}>
+                <Grid item xs={12} lg={6} xl={6}>
+                  <Box>
+                    <CustomFormLabel>Postal code</CustomFormLabel>
+                    <Box style={{ display: "flex" }}>
+                      <CustomTextField fullWidth variant="outlined" />
+                    </Box>
+                  </Box>
+                </Grid>
+
+                <Grid item xs={12} lg={6} xl={6}>
+                  <Box>
+                    <CustomFormLabel>City</CustomFormLabel>
+                    <CustomTextField
+                      variant="outlined"
+                      fullWidth
+                      endAdornment={
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            edge="end"
+                          >
+                            adasdad
+                            <ContentCopyIcon style={{ color: "red" }} />
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                    />
+                  </Box>
+                </Grid>
+                <Grid item xs={12} lg={6} xl={6}>
+                  <Box>
+                    <CustomFormLabel>Province</CustomFormLabel>
+                    <Box style={{ display: "flex" }}>
+                      <CustomTextField fullWidth variant="outlined" />
+                    </Box>
+                  </Box>
+                </Grid>
+
+                <Grid item xs={12} lg={6} xl={6}>
                   <Box>
                     <CustomFormLabel>Country</CustomFormLabel>
-                    <CustomTextField variant="outlined" fullWidth />
+                    <CustomTextField
+                      variant="outlined"
+                      fullWidth
+                      defaultValue="India"
+                      disabled
+                    />
                   </Box>
                 </Grid>
                 <Grid item xs={12} lg={6} xl={6}>
@@ -74,7 +117,7 @@ function Address() {
                   </Box>
                 </Grid>
 
-                <Grid item xs={12} lg={4} xl={4}>
+                {/* <Grid item xs={12} lg={4} xl={4}>
                   <Box>
                     <CustomFormLabel>City</CustomFormLabel>
                     <CustomTextField
@@ -95,14 +138,8 @@ function Address() {
                   </Box>
                 </Grid>
 
-                <Grid item xs={12} lg={4} xl={4}>
-                  <Box>
-                    <CustomFormLabel>Province</CustomFormLabel>
-                    <Box style={{ display: "flex" }}>
-                      <CustomTextField fullWidth variant="outlined" />
-                    </Box>
-                  </Box>
-                </Grid>
+           
+                
                 <Grid item xs={12} lg={4} xl={4}>
                   <Box>
                     <CustomFormLabel>Postal code</CustomFormLabel>
@@ -110,7 +147,7 @@ function Address() {
                       <CustomTextField fullWidth variant="outlined" />
                     </Box>
                   </Box>
-                </Grid>
+                </Grid> */}
               </Grid>
             </Box>
             <CustomeButton

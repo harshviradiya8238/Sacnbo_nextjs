@@ -14,7 +14,15 @@ const BlankLayout = ({ children }) => {
           <ResponsiveAppBar />
         </>
       )}
-      <Box>{children}</Box>
+      {pathname.includes("userProfile") ? (
+        <>
+          <div style={{ marginTop: "100px" }}>
+            <Box>{children}</Box>
+          </div>
+        </>
+      ) : (
+        <Box>{children}</Box>
+      )}
     </>
   );
 };

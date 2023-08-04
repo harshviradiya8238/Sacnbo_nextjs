@@ -17,7 +17,7 @@ function UserDetails() {
         container
         sx={{
           justifyContent: "center",
-          marginTop: "200px",
+
           marginBottom: "50px",
 
           // height: "fit-content",
@@ -54,7 +54,8 @@ function UserDetails() {
                         style={{
                           p: 4,
                           maxHeight: "100%",
-
+                          height: "100%",
+                          width: "100%",
                           boxShadow:
                             " 4px 2px 16px 0px rgba(95, 157, 231, 0.48), -4px -2px 16px 0px #FFF",
                           borderRadius: "20px",
@@ -315,7 +316,9 @@ function UserDetails() {
                             justifyContent: "space-between",
                           }}
                         >
-                          <CustomFormLabel>Retype New Password</CustomFormLabel>
+                          <CustomFormLabel style={{ maxWidth: "20%" }}>
+                            Retype New Password
+                          </CustomFormLabel>
                           <CustomTextField
                             variant="outlined"
                             sx={{ width: "75%" }}
